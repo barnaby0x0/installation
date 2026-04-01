@@ -1,4 +1,24 @@
 ---
+- name: Check if yay is installed with pacman
+  ansible.builtin.command: pacman -Q yay
+  register: yay_pacman
+  changed_when: false
+  failed_when: false
+
+- name: Clone yay (only if not installed)
+  ansible.builtin.git:
+    repo: https://aur.archlinux.org/yay-bin.git
+    dest: "{{ srcdir }}/yay"
+    update: true
+  when: yay_pacman.rc != 0
+
+- name: Build and install yay (only if not installed)
+  ansible.builtin.command:
+    chdir: "{{ srcdir }}/yay"
+    cmd: "makepkg -sfi --noconfirm"
+  when: yay_pacman.rc != 0
+  # creates: /usr/bin/yay # redondant mais safe
+
 - name: Install pacman packages
   become: yes
   community.general.pacman:
