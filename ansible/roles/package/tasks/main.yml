@@ -17,7 +17,6 @@
     chdir: "{{ srcdir }}/yay"
     cmd: "makepkg -sfi --noconfirm"
   when: yay_pacman.rc != 0
-  creates: /usr/bin/yay 
 
 - name: Install pacman packages
   become: yes
