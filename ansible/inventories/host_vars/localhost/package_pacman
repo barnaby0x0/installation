@@ -89,7 +89,6 @@ pacman_new:
   - name: "yubikey-manager"
 
 pacman_vm:
-  - name: "bridge-utils"
   - name: "dnsmasq"
   - name: "ebtables"
   - name: "edk2-ovmf"
