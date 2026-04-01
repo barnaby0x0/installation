@@ -1,0 +1,47 @@
+---
+
+- name: Install pacman prérequis
+  become: yes
+  community.general.pacman:
+    name: "{{ item }}"
+    state: "present"
+  loop: 
+    - stow
+    - git
+
+- name: Git checkout
+  ansible.builtin.git:
+    repo: "{{ dotfiles_repo }}"
+    dest: "{{ dotfiles_path }}"
+    accept_hostkey: yes
+    version: local
+    update: yes
+
+- name: Créer le répertoire ~/.config
+  file:
+    path: "{{ ansible_user_dir }}/.config"
+    state: directory
+    mode: '0755'
+
+- name: Vérifier si stow doit être exécuté pour chaque configuration
+  shell: |
+        set -o pipefail
+        stow -vn --target={{ ansible_user_dir }} {{ item.options | default('') }} {{ item.name }} 2>&1 | grep -q -E '(LINK|UNLINK|MISSING): .*' && echo "changed" || echo "ok"
+  args:
+    chdir: "{{ dotfiles_path }}"
+  register: stow_check
+  changed_when: stow_check.stdout == "changed"
+  loop: "{{ stow_configs }}"
+
+# - name: debug
+#   debug:
+#     msg: "{{ item.item.name }}"
+#   when: item.changed
+#   loop: "{{ stow_check.results }}"    
+
+- name: Exécuter stow pour les configurations nécessitant des changements
+  command: "stow --target={{ ansible_user_dir }} {{ item.item.options | default('') }} {{ item.item.name }}"
+  args:
+    chdir: "{{ dotfiles_path }}"
+  when: item.changed
+  loop: "{{ stow_check.results }}"

@@ -1,0 +1,30 @@
+- name: ntp tasks
+  tags: fstab
+  block:
+
+  - name: "Créer le dossier de backup"
+    file:
+      path: "{{ backup_dir }}"
+      state: directory
+      owner: "{{ ansible_user_id }}"
+      group: "{{ ansible_user_gid }}"
+      mode: '0755'
+    become: yes
+  
+  - name: "Backup du fstab actuel"
+    copy:
+      src: /etc/fstab
+      dest: "{{ backup_dir }}/fstab.backup-{{ ansible_date_time.epoch }}"
+      remote_src: yes
+    changed_when: false
+    when: fstab_backup
+  
+  - name: "Vérifier si les entrées existent déjà"
+    lineinfile:
+      path: /etc/fstab
+      line: "{{ item.line }}"
+      state: "{{ item.state }}"
+      backup: "{{ fstab_backup }}"
+      validate: "findmnt --verify %s"
+    loop: "{{ fstab_entries }}"
+    notify: reload systemd

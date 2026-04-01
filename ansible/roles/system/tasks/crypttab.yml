@@ -1,0 +1,11 @@
+- name: ntp tasks
+  tags: crypttab
+  block:
+  - name: "crypttab entries management"
+    lineinfile:
+      path: /etc/crypttab
+      line: "{{ item.line }}"
+      state: "{{ item.state }}"
+      backup: "{{ crypttab_backup }}"
+    loop: "{{ crypttab_entries }}"
+    notify: reload systemd

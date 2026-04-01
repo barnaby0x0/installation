@@ -1,0 +1,4 @@
+# Configuration locale
+backup_dir: "/home/user/ansible-backups"
+mount_point_owner: "user"
+mount_point_group: "user"

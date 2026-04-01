@@ -1,0 +1,18 @@
+fstab_entries:
+  - line: "UUID=6E7F-D690 /mnt/22E9-B035 exfat defaults,noauto,uid=1000,gid=1000 0 0"
+    comment: "Disque externe exfat"
+    state: present
+  - line: "10.10.0.72:/Musique    /home/user/Musique/    nfs    defaults,nofail,x-systemd.device-timeout=9,proto=tcp,port=2049 0 0"
+    comment: "NFS Musique - Desktop seulement"
+    state: absent
+  - line: "10.10.0.72:/Workspace    /home/user/Workspace/    nfs    defaults,nofail,x-systemd.device-timeout=9,proto=tcp,port=2049 0 0"
+    comment: "NFS Workspace - Desktop seulement"
+    state: absent
+
+crypttab_entries: 
+  - line: "vmdisks /dev/disk/by-partlabel/vm_disks /etc/keys/vmdisks.key luks"
+    comment: "vm disks"
+    state: present
+  - line: "torrent /dev/disk/by-partlabel/torrent /etc/keys/torrent.key luks"
+    comment: "torrent disks"
+    state: present    

@@ -1,0 +1,19 @@
+dotfiles_path: "{{ ansible_user_dir }}/dotfiles"
+dotfiles_repo: "git@github.com:barnaby0x0/dot.git"
+stow_configs:
+  - name: git
+    options: ""
+  - name: zsh
+    options: ""
+  - name: vim
+    options: "--no-folding"
+  - name: terminator
+    options: "--no-folding"
+  - name: gnupg
+    options: "--no-folding"
+  - name: bashtop
+    options: "--no-folding"
+  - name: geany
+    options: "--no-folding"
+  - name: tmux
+    options: ""

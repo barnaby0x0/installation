@@ -1,0 +1,9 @@
+all:
+  hosts:
+    localhost:
+      ansible_connection: local
+      ansible_user: user
+    vm1:
+      ansible_host: 192.168.122.96
+      ansible_connection: ssh
+      ansible_user: user

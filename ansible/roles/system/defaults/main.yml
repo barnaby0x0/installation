@@ -1,0 +1,5 @@
+---
+fstab_backup: yes
+crypttab_backup: yes
+fstab_validate: no
+fstab_entries: []

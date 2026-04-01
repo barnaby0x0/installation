@@ -1,0 +1,24 @@
+---
+- name: "Configuration du laptop local"
+  hosts: "{{ target_host | default('localhost') }}"
+  become: no
+  gather_facts: yes
+  tasks:
+    - name: "Créer le dossier de backup"
+      file:
+        path: "{{ backup_dir }}"
+        state: directory
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_gid }}"
+        mode: '0755'
+      become: yes
+  roles:
+    - {role: system, become: yes, tags: system}
+    - {role: package, become: yes, tags: package}
+    - {role: git_repos, become: no, tags: git}
+    - {role: dotfiles, become: no, tags: dotfiles}
+  post_tasks:
+    - name: "Afficher les points de montage configurés"
+      debug:
+        msg: "Point de montage: {{ item.line.split()[1] }}"
+      loop: "{{ fstab_entries }}"

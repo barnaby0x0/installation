@@ -1,0 +1,40 @@
+---
+- name: Afficher les informations utilisateur
+  debug:
+    msg: |
+      User ID: {{ ansible_facts.user_id }}
+      Shell: {{ ansible_facts.user_shell }}
+
+- name: Set user shell to zsh
+  ansible.builtin.user:
+    name: "{{ ansible_facts.user_id }}"
+    shell: /bin/zsh
+  become: true
+
+- name: "Créer le dossier de backup"
+  file:
+    path: "/home/{{ ansible_facts.user_id }}/.oh-my-zsh-install"
+    state: directory
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid }}"
+    mode: '0755'
+
+- name: Download ohmyzsh
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: "/home/{{ ansible_facts.user_id }}/.oh-my-zsh-install/install.sh"
+    mode: '0755'
+
+- name: Install ohmyzsh
+  ansible.builtin.script:
+    cmd: "/home/{{ ansible_facts.user_id }}/.oh-my-zsh-install/install.sh"  
+
+- name: "Ensure the user {{ ansible_facts.user_id }} has a zsh shell."
+  user:
+    name: "{{ ansible_facts.user_id }}"
+    shell: /bin/zsh
+    state: present
+  become: yes
+  tags:
+    - test
+

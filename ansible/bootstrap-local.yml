@@ -1,0 +1,12 @@
+---
+- name: "Configuration du laptop local"
+  hosts: "{{ target_host | default('localhost') }}"
+  become: no
+  gather_facts: yes
+
+  roles:
+    # - { role: system, become: yes, tags: system }
+    - { role: package, become: yes, tags: package, ignore_errors: true }
+    - { role: ohmyzsh, become: no, tags: ohmyzsh }
+    - { role: dotfiles, become: no, tags: dotfiles }
+    - { role: git_repos, become: no, tags: git }

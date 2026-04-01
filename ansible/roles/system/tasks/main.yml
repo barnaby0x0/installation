@@ -1,0 +1,8 @@
+---
+- include_tasks: fstab.yml
+  when: fstab_entries is defined
+  tags: fstab
+
+- include_tasks: crypttab.yml
+  when: crypttab_entries is defined
+  tags: crypttab
