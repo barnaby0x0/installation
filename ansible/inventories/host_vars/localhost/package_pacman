@@ -6,7 +6,6 @@ pacman_base:
   - name: "baobab"
   - name: "bmon"
   - name: "btop"
-  - name: "cheese"
   - name: "direnv"
   - name: "discover"
   - name: "dive"
