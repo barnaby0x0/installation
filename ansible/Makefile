@@ -3,8 +3,11 @@
 .PHONY: setup clean
 
 # Cible par défaut : tout exécuter
-setup: .venv/bin/ansible-playbook
+setup: .venv/bin/ansible-galaxy
 	.venv/bin/ansible-playbook -i inventories setup-local.yml -K
+
+.venv/bin/ansible-galaxy: .venv/bin/ansible-playbook
+	.venv/bin/ansible-galaxy collection install kewlfft.aur
 
 # Créer l'environnement virtuel et installer Ansible
 .venv/bin/ansible-playbook: .venv/bin/pip
