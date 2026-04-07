@@ -49,6 +49,8 @@ pacman_base:
   - name: "nmap"
   - name: "exiftool"
   - name: "knockd"
+  - name: "firejail"
+  - name: "firetools"
 
 pacman_docker:
   - name: "docker"
