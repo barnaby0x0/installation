@@ -1,6 +1,8 @@
 pacman_base:
   - name: "akm"
   - name: "sops"
+  - name: "tig"
+  - name: "gitg"
   - name: "rlwrap"
   - name: "hexedit"
   - name: "apparmor"
