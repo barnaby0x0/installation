@@ -54,7 +54,6 @@ pacman_base:
   - name: "yamlfmt"
   - name: "zip"
   - name: "zsh"
-  - name: "hddtemp"
 
 pacman_docker:
   - name: "docker"
