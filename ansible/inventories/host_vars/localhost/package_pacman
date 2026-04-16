@@ -48,11 +48,13 @@ pacman_base:
   - name: "tree"
   - name: "ttf-agave-nerd"
   - name: "vault"
+  - name: "veracrypt"
   - name: "wireguard-tools"
   - name: "wl-clipboard"
   - name: "yamlfmt"
   - name: "zip"
   - name: "zsh"
+  - name: "hddtemp"
 
 pacman_docker:
   - name: "docker"
