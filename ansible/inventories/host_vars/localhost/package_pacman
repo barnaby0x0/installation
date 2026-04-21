@@ -32,6 +32,7 @@ pacman_base:
   - name: "nmap"
   - name: "npm"
   - name: "nvtop"
+  - name: "patchelf"
   - name: "p7zip"
   - name: "pass"
   - name: "perl-image-exiftool"
