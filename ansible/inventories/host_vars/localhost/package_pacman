@@ -1,5 +1,6 @@
 pacman_base:
   - name: "akm"
+  - name: "libreoffice"
   - name: "apparmor"
   - name: "baobab"
   - name: "bmon"
@@ -69,7 +70,6 @@ pacman_new:
   - name: "bc"
   - name: "cdrtools"
   - name: "cmus"
-  - name: "code"
   - name: "guestfs-tools"
   - name: "libguestfs"
   - name: "lxc"
