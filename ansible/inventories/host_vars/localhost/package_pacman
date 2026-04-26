@@ -1,5 +1,4 @@
 pacman_base:
-  - name: "qtpass"
   - name: "akm"
   - name: "libreoffice"
   - name: "apparmor"
@@ -37,6 +36,7 @@ pacman_base:
   - name: "patchelf"
   - name: "p7zip"
   - name: "pass"
+  - name: "qtpass"
   - name: "perl-image-exiftool"
   - name: "pinentry"
   - name: "python-pdftotext"
