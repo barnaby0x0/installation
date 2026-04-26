@@ -1,4 +1,5 @@
 pacman_base:
+  - name: "qtpass"
   - name: "akm"
   - name: "libreoffice"
   - name: "apparmor"

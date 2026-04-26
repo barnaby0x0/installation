@@ -22,4 +22,3 @@ flatpak_packages:
   - name: "org.kde.yakuake"
   - name: "org.keepassxc.KeePassXC"
   - name: "org.sqlitebrowser.sqlitebrowser"
-  - name: "org.libreoffice.LibreOffice"
