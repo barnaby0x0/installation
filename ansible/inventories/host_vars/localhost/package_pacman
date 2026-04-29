@@ -1,6 +1,7 @@
 pacman_base:
   - name: "akm"
   - name: "libreoffice"
+  - name: "python-argcomplete"
   - name: "apparmor"
   - name: "baobab"
   - name: "bmon"
