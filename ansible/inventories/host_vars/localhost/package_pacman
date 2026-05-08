@@ -25,7 +25,7 @@ pacman_base:
   - name: "htop"
   - name: "inotify-tools"
   - name: "jq"
-  - name: "knockd"
+  - { name: "knockd", state: "absent" }
   - name: "libfido2"
   - name: "lshw"
   - name: "lynx"

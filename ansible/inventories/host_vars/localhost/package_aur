@@ -1,5 +1,6 @@
 ---
 aur_packages:
+  - name: "megacmd"
   - name: "vscodium"
   - name: "brscan5"
   - name: "caps-log"
