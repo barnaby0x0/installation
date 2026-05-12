@@ -1,4 +1,5 @@
 pacman_base:
+  - name: "cargo"
   - name: "akm"
   - name: "libreoffice"
   - name: "python-argcomplete"
