@@ -1,5 +1,6 @@
 ---
 aur_packages:
+  - name: "log2ram"
   - name: "megacmd"
   - name: "vscodium"
   - name: "brscan5"

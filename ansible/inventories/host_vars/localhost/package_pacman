@@ -5,6 +5,7 @@ pacman_base:
   - name: "python-argcomplete"
   - name: "apparmor"
   - name: "baobab"
+  - name: "bat"
   - name: "bmon"
   - name: "btop"
   - name: "direnv"
