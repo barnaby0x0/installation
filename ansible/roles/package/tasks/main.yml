@@ -60,6 +60,8 @@
   loop: "{{ aur_packages }}"
   become: yes
   become_user: aur_builder
+  environment:
+    CMAKE_POLICY_VERSION_MINIMUM: "3.5"
   vars:
     ansible_python_interpreter: /usr/bin/python3
   tags: aur
