@@ -20,4 +20,4 @@ aur_packages:
   - name: "vagrant"
   - {name: "zenmap", state: "absent"}
   - name: "multitail"
-  - name: "i2p-bin"
+  - {name: "i2p-bin", state: "absent"}
