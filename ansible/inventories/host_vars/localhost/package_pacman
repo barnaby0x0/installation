@@ -60,6 +60,7 @@ pacman_base:
   - name: "yamlfmt"
   - name: "zip"
   - name: "zsh"
+  - name: "uv"
 
 pacman_docker:
   - name: "docker"

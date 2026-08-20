@@ -9,13 +9,27 @@
     - stow
     - git
 
-- name: Git checkout
+- name: Vérifier si le dossier des dotfiles existe déjà
+  ansible.builtin.stat:
+    path: "{{ dotfiles_path }}"
+  register: dotfiles_stat
+
+- name: Git checkout (uniquement si le dossier n'existe pas)
   ansible.builtin.git:
     repo: "{{ dotfiles_repo }}"
     dest: "{{ dotfiles_path }}"
     accept_hostkey: yes
     version: local
-    update: yes
+    update: no
+  when: not dotfiles_stat.stat.exists
+
+#- name: Git checkout
+#  ansible.builtin.git:
+#    repo: "{{ dotfiles_repo }}"
+#    dest: "{{ dotfiles_path }}"
+#    accept_hostkey: yes
+#    version: local
+#    update: yes
 
 - name: Créer le répertoire ~/.config
   file:

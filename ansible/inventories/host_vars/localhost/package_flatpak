@@ -8,7 +8,6 @@ flatpak_packages:
   - name: "com.obsproject.Studio"
   - name: "fr.free.Homebank"
   - name: "im.riot.Riot"
-  - {name: "info.portfolio_performance.PortfolioPerformance", state: "absent"}
   - name: "io.github.flattool.Warehouse"
   - name: "io.gitlab.librewolf-community"
   - name: "io.mpv.Mpv"

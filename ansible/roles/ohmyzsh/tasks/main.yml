@@ -28,6 +28,8 @@
 - name: Install ohmyzsh
   ansible.builtin.script:
     cmd: "/home/{{ ansible_facts.user_id }}/.oh-my-zsh-install/install.sh"  
+  args:
+    creates: "/home/{{ ansible_facts.user_id }}/.oh-my-zsh"
 
 - name: "Ensure the user {{ ansible_facts.user_id }} has a zsh shell."
   user:
@@ -37,4 +39,12 @@
   become: yes
   tags:
     - test
+
+- name: Powerlevel10k
+  ansible.builtin.git:
+    repo: 'https://github.com/romkatv/powerlevel10k.git'
+    dest: "{{ ansible_env.ZSH_CUSTOM | default(ansible_env.HOME + '/.oh-my-zsh/custom') }}/themes/powerlevel10k"
+    depth: 1
+    update: true
+    force: true
 

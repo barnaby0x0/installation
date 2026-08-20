@@ -16,6 +16,7 @@
     - {role: system, become: yes, tags: system}
     - {role: package, become: yes, tags: package}
     - {role: git_repos, become: no, tags: git}
+    - {role: ohmyzsh, become: no, tags: ohmyzsh}
     - {role: dotfiles, become: no, tags: dotfiles}
   post_tasks:
     - name: "Afficher les points de montage configurés"
