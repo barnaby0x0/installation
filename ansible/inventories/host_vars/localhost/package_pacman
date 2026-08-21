@@ -1,112 +1,182 @@
-pacman_base:
-  - name: "cargo"
-  - name: "akm"
-  - name: "libreoffice"
-  - name: "python-argcomplete"
-  - name: "apparmor"
-  - name: "baobab"
+# ---------------------------------------------------------------------------
+# Core / CLI
+# ---------------------------------------------------------------------------
+pacman_cli:
   - name: "bat"
   - name: "bmon"
   - name: "btop"
-  - name: "direnv"
-  - name: "discover"
-  - name: "dive"
-  - name: "duplicity"
-  - name: "earlyoom"
-  - name: "exiftool"
+  - name: "htop"
+  - name: "mc"
+  - name: "tree"
+  - name: "tmux"
+  - name: "zsh"
+  - name: "rlwrap"
+  - name: "lynx"
+  - name: "hexedit"
+  - name: "jq"
+  - name: "uv"
+  - name: "zip"
+  - name: "p7zip"
+
+# ---------------------------------------------------------------------------
+# Development
+# ---------------------------------------------------------------------------
+pacman_dev:
+  - name: "cargo"
+  - name: "npm"
+  - name: "python-argcomplete"
+  - name: "python-pdftotext"
+  - name: "python-virtualenv"
+  - name: "patchelf"
   - name: "expect"
-  - name: "firejail"
-  - name: "firetools"
-  - name: "flatpak"
-  - name: "gcr"
-  - name: "geany"
+
+# ---------------------------------------------------------------------------
+# Git / Version Control
+# ---------------------------------------------------------------------------
+pacman_git:
   - name: "git-crypt"
   - name: "gitg"
-  - name: "gparted"
-  - name: "hexedit"
-  - name: "htop"
-  - name: "inotify-tools"
-  - name: "jq"
-  - { name: "knockd", state: "absent" }
-  - name: "libfido2"
-  - name: "lshw"
-  - name: "lynx"
-  - name: "mc"
   - name: "myrepos"
-  - name: "nmap"
-  - name: "npm"
-  - name: "nvtop"
-  - name: "patchelf"
-  - name: "p7zip"
-  - name: "pass"
-  - name: "qtpass"
-  - name: "perl-image-exiftool"
-  - name: "pinentry"
-  - name: "python-pdftotext"
-  - name: "rclone"
-  - name: "restic"
-  - name: "rlwrap"
-  - name: "sops"
-  - name: "sshfs"
-  - name: "terminator"
-  - name: "terraform"
   - name: "tig"
-  - name: "tree"
-  - name: "ttf-agave-nerd"
-  - name: "vault"
-  - name: "veracrypt"
-  - name: "wireguard-tools"
-  - name: "wl-clipboard"
-  - name: "yamlfmt"
-  - name: "zip"
-  - name: "zsh"
-  - name: "uv"
 
+# ---------------------------------------------------------------------------
+# Security / Identity
+# ---------------------------------------------------------------------------
+pacman_security:
+  - name: "apparmor"
+  - name: "firejail"
+  - name: "firetools"
+  - name: "gcr"
+  - name: "libfido2"
+  - name: "lynis"
+  - name: "nmap"
+  - name: "pass"
+  - name: "pinentry"
+  - name: "qtpass"
+  - name: "sops"
+  - name: "yubikey-manager"
+
+# ---------------------------------------------------------------------------
+# Network
+# ---------------------------------------------------------------------------
+pacman_network:
+  - name: "arp-scan"
+  - name: "ipset"
+  - name: "net-tools"
+  - name: "speedtest-cli"
+  - name: "wireguard-tools"
+
+# ---------------------------------------------------------------------------
+# Docker / Containers
+# ---------------------------------------------------------------------------
 pacman_docker:
   - name: "docker"
   - name: "docker-buildx"
   - name: "docker-compose"
-
-pacman_network:
-  - name: "ipset"
-
-pacman_new:
-  - name: "arp-scan"
-  - name: "bc"
-  - name: "cdrtools"
-  - name: "cmus"
-  - name: "guestfs-tools"
-  - name: "libguestfs"
+  - name: "dive"
   - name: "lxc"
   - name: "lxd"
-  - name: "lynis"
-  - name: "mpc"
-  - name: "mpd"
-  - name: "net-tools"
-  - name: "packer"
-  - name: "python-virtualenv"
-  - name: "qemu-user-static"
-  - name: "rpi-imager"
-  - name: "skanpage"
-  - name: "speedtest-cli"
-  - name: "stow"
-  - name: "syncthing"
-  - name: "tmux"
-  - name: "transmission-gtk"
-  - name: "ttf-dejavu"
-  - name: "tui-journal"
-  - name: "yamllint"
-  - name: "yubikey-manager"
 
+# ---------------------------------------------------------------------------
+# Virtualization
+# ---------------------------------------------------------------------------
 pacman_vm:
   - name: "dnsmasq"
   - name: "ebtables"
   - name: "edk2-ovmf"
+  - name: "guestfs-tools"
+  - name: "libguestfs"
   - name: "libvirt"
   - name: "openbsd-netcat"
   - name: "qemu-full"
+  - name: "qemu-user-static"
   - name: "vde2"
   - name: "virt-manager"
   - name: "virt-viewer"
 
-pacman_packages: "{{ pacman_base | union(pacman_docker) | union(pacman_network) | union(pacman_new) | union(pacman_vm) }}"
+# ---------------------------------------------------------------------------
+# DevOps / Infrastructure
+# ---------------------------------------------------------------------------
+pacman_devops:
+  - name: "packer"
+  - name: "terraform"
+  - name: "vault"
+  - name: "yamlfmt"
+  - name: "yamllint"
+
+# ---------------------------------------------------------------------------
+# Backup / Synchronization
+# ---------------------------------------------------------------------------
+pacman_backup:
+  - name: "duplicity"
+  - name: "rclone"
+  - name: "restic"
+  - name: "syncthing"
+
+# ---------------------------------------------------------------------------
+# Storage / Disk / Filesystem
+# ---------------------------------------------------------------------------
+pacman_storage:
+  - name: "gparted"
+  - name: "veracrypt"
+
+# ---------------------------------------------------------------------------
+# Desktop / GUI
+# ---------------------------------------------------------------------------
+pacman_desktop:
+  - name: "akm"
+  - name: "baobab"
+  - name: "discover"
+  - name: "geany"
+  - name: "libreoffice"
+  - name: "rpi-imager"
+  - name: "skanpage"
+  - name: "terminator"
+  - name: "tilda"
+  - name: "transmission-gtk"
+
+# ---------------------------------------------------------------------------
+# Media
+# ---------------------------------------------------------------------------
+pacman_media:
+  - name: "cmus"
+  - name: "mpc"
+  - name: "mpd"
+
+# ---------------------------------------------------------------------------
+# System / Hardware
+# ---------------------------------------------------------------------------
+pacman_system:
+  - name: "earlyoom"
+  - name: "exiftool"
+  - name: "inotify-tools"
+  - name: "lshw"
+  - name: "perl-image-exiftool"
+  - name: "bc"
+  - name: "cdrtools"
+  - name: "stow"
+  - name: "ttf-agave-nerd"
+  - name: "ttf-dejavu"
+  - name: "wl-clipboard"
+  - name: "tui-journal"
+  - name: "flatpak"
+
+# ---------------------------------------------------------------------------
+# Packages
+# ---------------------------------------------------------------------------
+pacman_packages: >-
+  {{
+    pacman_cli
+    | union(pacman_dev)
+    | union(pacman_git)
+    | union(pacman_security)
+    | union(pacman_network)
+    | union(pacman_docker)
+    | union(pacman_vm)
+    | union(pacman_devops)
+    | union(pacman_backup)
+    | union(pacman_storage)
+    | union(pacman_desktop)
+    | union(pacman_media)
+    | union(pacman_system)
+  }}
